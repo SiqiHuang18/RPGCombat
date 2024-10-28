@@ -5,8 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "AbilitySystemInterface.h"
 #include "RPGCombatCharacter.generated.h"
 
+class UWarriorAttributeSet;
+class UWarriorAbilitySystemComponent;
 class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
@@ -17,7 +20,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class ARPGCombatCharacter : public ACharacter
+class ARPGCombatCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -49,11 +52,22 @@ class ARPGCombatCharacter : public ACharacter
 	UInputAction* LookAction;
 
 public:
-	ARPGCombatCharacter();
 	
+	ARPGCombatCharacter();
 
+	//~ Begin IabilitySystemInterface Interface
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const;
+	//~ End IabilitySystemInterface Interface
 protected:
 
+	//~ Begin APwan Interface
+	virtual void PossessedBy(AController* NewController) override;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = AbilitySystem)
+	UWarriorAbilitySystemComponent* WarriorAbilitySystemComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = AbilitySystem)	
+	UWarriorAttributeSet* WarriorAttributeSet;
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
 
@@ -68,6 +82,11 @@ protected:
 	virtual void BeginPlay();
 
 public:
+
+	FORCEINLINE UWarriorAbilitySystemComponent* GetWarriorAbilitySystemComponent() const {return WarriorAbilitySystemComponent;}
+
+	FORCEINLINE UWarriorAttributeSet* GetWarriorAttribute() const {return WarriorAttributeSet;}
+	
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/

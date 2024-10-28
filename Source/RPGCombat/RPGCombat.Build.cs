@@ -14,7 +14,8 @@ public class RPGCombat : ModuleRules
 			"Engine", 
 			"InputCore", 
 			"EnhancedInput",
-			"GameplayTags"
+			"GameplayTags",
+			"GameplayTasks"
 			});
 	}
 }

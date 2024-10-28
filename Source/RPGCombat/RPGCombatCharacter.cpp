@@ -12,6 +12,8 @@
 #include "InputActionValue.h"
 #include "WarriorDebugHelper.h"
 #include "WarriorGameplayTags.h"
+#include "AbilitySystem/WarriorAbilitySystemComponent.h"
+#include "AbilitySystem/WarriorAttributeSet.h"
 #include "Components/Input/WarriorInputComponent.h"
 #include "DataAssets/Input/DataAsset_InputConfig.h"
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -56,6 +58,33 @@ ARPGCombatCharacter::ARPGCombatCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	// Create AbilitySystem components
+	WarriorAbilitySystemComponent = CreateDefaultSubobject<UWarriorAbilitySystemComponent>(TEXT("WarriorAbilitySystemComponent"));
+	WarriorAttributeSet = CreateDefaultSubobject<UWarriorAttributeSet>(TEXT("WarriorAttributeSet"));
+}
+
+UAbilitySystemComponent* ARPGCombatCharacter::GetAbilitySystemComponent() const
+{
+	return GetWarriorAbilitySystemComponent();
+}
+
+void ARPGCombatCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	Debug::Print(TEXT("Enter Processed by"));
+	if(WarriorAbilitySystemComponent)
+	{
+		Debug::Print(TEXT("Ability System Valid"));
+		WarriorAbilitySystemComponent->InitAbilityActorInfo(this,this);
+		
+		const FString ASCText = FString::Printf(TEXT("Owner Actor:%s, AvatarActor:%s"),
+			*WarriorAbilitySystemComponent->GetOwnerActor()->GetActorLabel(),
+			*WarriorAbilitySystemComponent->GetAvatarActor()->GetActorLabel());
+		
+		Debug::Print(TEXT("Component valid" )+ASCText,FColor::Green);
+		Debug::Print(TEXT("attribute valid" )+ASCText,FColor::Green);
+	}
 }
 
 void ARPGCombatCharacter::BeginPlay()
