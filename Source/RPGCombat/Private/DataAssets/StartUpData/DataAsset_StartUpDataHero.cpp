@@ -15,6 +15,7 @@ void UDataAsset_StartUpDataHero::GiveToAbilitySystemComponent(UWarriorAbilitySys
 	for (const FWarriorHeroAbilitySet& AbilitySet : HeroStartUpAbilitySets)
 	{
 		if(!AbilitySet.IsValid()) continue;
+		// specify ability, ability origin, apply level, Ability Tag
 		FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant);
 		AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
 		AbilitySpec.Level = ApplyLevel;
