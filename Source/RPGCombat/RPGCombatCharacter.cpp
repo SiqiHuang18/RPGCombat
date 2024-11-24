@@ -14,6 +14,7 @@
 #include "WarriorGameplayTags.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/WarriorAttributeSet.h"
+#include "Components/Combat/HeroCombatComponent.h"
 #include "Components/Input/WarriorInputComponent.h"
 #include "DataAssets/Input/DataAsset_InputConfig.h"
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
@@ -56,6 +57,7 @@ ARPGCombatCharacter::ARPGCombatCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName); // Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
+	HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("Hero Combat Component"));
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
@@ -72,6 +74,8 @@ UAbilitySystemComponent* ARPGCombatCharacter::GetAbilitySystemComponent() const
 void ARPGCombatCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+
+	
 	Debug::Print(TEXT("Enter Processed by"));
 	if(WarriorAbilitySystemComponent)
 	{
@@ -84,6 +88,17 @@ void ARPGCombatCharacter::PossessedBy(AController* NewController)
 		
 		Debug::Print(TEXT("Component valid" )+ASCText,FColor::Green);
 		Debug::Print(TEXT("attribute valid" )+ASCText,FColor::Green);
+
+		ensureMsgf(!CharacterStartupData.IsNull(),TEXT("Forget to assign start up data to %s"), *GetName());
+	}
+
+	// For Hero
+	if(!CharacterStartupData.IsNull())
+	{
+		if(UDataAsset_StartUpDataBase* LoadedData = CharacterStartupData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+		}
 	}
 }
 

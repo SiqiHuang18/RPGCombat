@@ -8,7 +8,11 @@
  */
 namespace WarriorGameplayTags
 {
-	UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MOVE)
-	UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_LOOK)
+	/** Input Tags**/
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_MOVE);
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_LOOK);
+
+	/** Player Tags**/
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe);
 }
 

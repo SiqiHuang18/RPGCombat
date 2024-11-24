@@ -7,4 +7,5 @@ namespace WarriorGameplayTags
 {
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_MOVE, "InputTag.Move")
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_LOOK, "InputTag.Look")
+	UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Axe, "Player.Weapon.Axe")
 }
