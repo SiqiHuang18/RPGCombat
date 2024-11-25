@@ -15,5 +15,8 @@ namespace WarriorGameplayTags
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_UnequipAxe);
 	/** Player Tags**/
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe);
+
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Equip_Axe);
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_UnEquip_Axe);
 }
 
