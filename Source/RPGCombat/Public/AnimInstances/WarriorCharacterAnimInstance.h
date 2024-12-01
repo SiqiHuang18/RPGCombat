@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AnimInstances/WarriorBaseAnimInstance.h"
-#include "WarrioCharacterAnimInstance.generated.h"
+#include "WarriorCharacterAnimInstance.generated.h"
 class UCharacterMovementComponent;
 class ARPGCombatCharacter;
 
@@ -12,7 +12,7 @@ class ARPGCombatCharacter;
  * 
  */
 UCLASS()
-class RPGCOMBAT_API UWarrioCharacterAnimInstance : public UWarriorBaseAnimInstance
+class RPGCOMBAT_API UWarriorCharacterAnimInstance : public UWarriorBaseAnimInstance
 {
 	GENERATED_BODY()
 
