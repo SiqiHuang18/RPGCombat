@@ -3,15 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AnimInstances/WarrioBaseAnimInstance.h"
-#include "WarrioHeroLinkedAnimLayer.generated.h"
+#include "AnimInstances/WarriorBaseAnimInstance.h"
+#include "WarriorHeroLinkedAnimLayer.generated.h"
 
+class UWarriorHeroAnimInstance;
 /**
  * 
  */
 UCLASS()
-class RPGCOMBAT_API UWarrioHeroLinkedAnimLayer : public UWarrioBaseAnimInstance
+class RPGCOMBAT_API UWarriorHeroLinkedAnimLayer : public UWarriorBaseAnimInstance
 {
 	GENERATED_BODY()
-	
+
+	UFUNCTION(BlueprintPure, meta = (BlueprintThreadSafe))
+	UWarriorHeroAnimInstance* GetHeroAnimInstance() const;
 };
