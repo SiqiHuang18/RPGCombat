@@ -18,7 +18,14 @@ class RPGCOMBAT_API AWarriorEnemyCharacter : public AWarriorBaseCharacter
 public:
 	AWarriorEnemyCharacter();
 
+
+	virtual void PossessedBy(AController* NewController) override;
+	
 	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const	{return EnemyCombatComponent;}
+	
+private:
+	void InitEnemyStartUpData();
+	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat)
 	UEnemyCombatComponent* EnemyCombatComponent;
