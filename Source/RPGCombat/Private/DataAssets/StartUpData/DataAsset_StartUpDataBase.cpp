@@ -32,6 +32,22 @@ void UDataAsset_StartUpDataBase::GrantAbilities(const TArray<TSubclassOf<UWarrio
 		AbilitySpec.Level = Applylevel;
 		
 		InWarriorASCToGive->GiveAbility(AbilitySpec);
+	}
+
+	if (!StartUpGameplayEffects.IsEmpty())
+	{
 		
+		for (const TSubclassOf < UGameplayEffect >& EffectClass : StartUpGameplayEffects)
+		{
+			if(!EffectClass) continue;
+ 
+			UGameplayEffect* EffectCDO = EffectClass->GetDefaultObject<UGameplayEffect>();
+ 
+			InWarriorASCToGive->ApplyGameplayEffectToSelf(
+				EffectCDO,
+				Applylevel,
+				InWarriorASCToGive->MakeEffectContext()
+			);
+		}
 	}
 }
