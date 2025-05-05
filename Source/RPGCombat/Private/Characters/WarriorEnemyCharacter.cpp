@@ -51,7 +51,6 @@ void AWarriorEnemyCharacter::InitEnemyStartUpData()
 			{
 				LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
 			}
-			Debug::Print(TEXT("Enemy Start Up Data Loaded"),FColor::Green);
 		}
 		)
 		
