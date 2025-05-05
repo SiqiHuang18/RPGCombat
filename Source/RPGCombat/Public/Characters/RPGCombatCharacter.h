@@ -63,10 +63,9 @@ class ARPGCombatCharacter : public AWarriorBaseCharacter
 public:
 	
 	ARPGCombatCharacter();
-
-	//~ Begin IabilitySystemInterface Interface
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-	//~ End IabilitySystemInterface Interface
+	
+	virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
+	
 protected:
 
 	//~ Begin APwan Interface

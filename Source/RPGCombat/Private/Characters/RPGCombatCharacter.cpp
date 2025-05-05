@@ -61,15 +61,13 @@ ARPGCombatCharacter::ARPGCombatCharacter()
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 
-	// Create AbilitySystem components
-	WarriorAbilitySystemComponent = CreateDefaultSubobject<UWarriorAbilitySystemComponent>(TEXT("WarriorAbilitySystemComponent"));
-	WarriorAttributeSet = CreateDefaultSubobject<UWarriorAttributeSet>(TEXT("WarriorAttributeSet"));
 }
 
-UAbilitySystemComponent* ARPGCombatCharacter::GetAbilitySystemComponent() const
+UPawnCombatComponent* ARPGCombatCharacter::GetPawnCombatComponent() const
 {
-	return GetWarriorAbilitySystemComponent();
+	return HeroCombatComponent;
 }
+
 
 void ARPGCombatCharacter::PossessedBy(AController* NewController)
 {

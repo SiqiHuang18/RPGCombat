@@ -20,6 +20,8 @@ public:
 
 
 	virtual void PossessedBy(AController* NewController) override;
+
+	virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
 	
 	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const	{return EnemyCombatComponent;}
 	
