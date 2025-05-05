@@ -10,7 +10,7 @@ class UWarriorAbilitySystemComponent;
 class UWarriorAttributeSet;
 class UDataAsset_StartUpDataBase;
 UCLASS()
-class AWarriorBaseCharacter : public ACharacter, public IAbilitySystemInterface
+class AWarriorBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnCombatInterface
 {
 	GENERATED_BODY()
 public:

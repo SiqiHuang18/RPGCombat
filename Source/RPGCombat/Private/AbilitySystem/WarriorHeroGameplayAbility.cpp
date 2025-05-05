@@ -4,7 +4,7 @@
 #include "AbilitySystem/WarriorHeroGameplayAbility.h"
 
 #include "Controllers/WarriorHeroController.h"
-#include "RPGCombat/RPGCombatCharacter.h"
+#include "Characters/RPGCombatCharacter.h"
 
 ARPGCombatCharacter* UWarriorHeroGameplayAbility::GetHeroCharacterFromActorInfo()
 {

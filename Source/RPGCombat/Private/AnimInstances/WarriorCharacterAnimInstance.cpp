@@ -4,7 +4,7 @@
 #include "AnimInstances/WarriorCharacterAnimInstance.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
-#include "RPGCombat/RPGCombatCharacter.h"
+#include "Characters/RPGCombatCharacter.h"
 
 void UWarriorCharacterAnimInstance::NativeInitializeAnimation()
 {

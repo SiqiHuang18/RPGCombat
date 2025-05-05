@@ -3,7 +3,7 @@
 
 #include "AnimInstances/Hero/WarriorHeroAnimInstance.h"
 
-#include "RPGCombat/RPGCombatCharacter.h"
+#include "Characters/RPGCombatCharacter.h"
 
 void UWarriorHeroAnimInstance::NativeInitializeAnimation()
 {
