@@ -16,6 +16,9 @@ void UPawnCombatComponent::RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegis
 		CurrentEquippedWeaponTag = InWeaponTagToRegister;
 	}
 
+	InWeaponToRegister->OnWeaponHitTarget.BindUObject(this,&ThisClass::OnHitTargetActor);
+	InWeaponToRegister->OnWeaponPulledFromTarget.BindUObject(this,&ThisClass::OnWeaponPulledFromTargetActor);
+	
 	const FString WeaponString = FString::Printf(TEXT("a weapon named %s has been registered using tag %s"),*InWeaponToRegister->GetName(),*InWeaponTagToRegister.ToString());
 	Debug::Print((WeaponString));
 }
@@ -53,12 +56,21 @@ void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDama
 		if (bShouldEnable)
 		{
 			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-			Debug::Print(WeaponToToggle->GetName() + TEXT(" collision enabled"),FColor::Green);
 		}
 		else
 		{
 			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-			Debug::Print(WeaponToToggle->GetName() + TEXT(" collision disabled"),FColor::Red);
+			OverlappedActors.Empty();
 		}		
 	}
+}
+
+void UPawnCombatComponent::OnHitTargetActor(AActor* HitActor)
+{
+	//Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT(" hit ") + HitActor->GetActorNameOrLabel(),FColor::Green);
+}
+
+void UPawnCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
+{
+	//Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT("'s weapon pulled from ") + InteractedActor->GetActorNameOrLabel(),FColor::Red);
 }
