@@ -28,9 +28,14 @@ namespace WarriorGameplayTags
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Status_JumpToFinisher);
 	
 	/** Enemy tags **/
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Melee);
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Ranged);
     UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Weapon);
 
 	/** Shared tags **/
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_HitReact);
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MeleeHit);
+
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
 }
 
