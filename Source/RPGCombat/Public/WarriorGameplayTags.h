@@ -29,7 +29,8 @@ namespace WarriorGameplayTags
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_HitPause);
 	
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Status_JumpToFinisher);
-	
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Light);
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Heavy);
 	/** Enemy tags **/
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Melee);
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Ranged);
@@ -38,7 +39,7 @@ namespace WarriorGameplayTags
 	/** Shared tags **/
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_HitReact);
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MeleeHit);
-
+	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_BaseDamage);
 	UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
 }
 
